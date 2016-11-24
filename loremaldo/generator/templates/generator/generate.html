@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Your Lorem Aldo</title>
+
+  <style>
+    html {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .container {
+      width: 800px;
+      margin: auto;
+      margin-top: 200px;
+      text-align: center;
+      font-family: cursive;
+      font-size: 26px;
+      padding: 15px;
+      border-radius: 5px 5px 0 0;
+      box-shadow: 0 -15px 18px 2px #ccc;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  {% for phrase in phrases %}
+    {{ phrase.text }}
+  {% endfor %}
+</div>
+</body>
+</html>
