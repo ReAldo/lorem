@@ -1,39 +1,43 @@
-<html>
-<head>
-  <title>Your Lorem Aldo</title>
+{% extends 'base.html' %}
 
-  <style>
-    html {
-      margin: 0;
-      padding: 0;
-    }
+{% block buttons %}
+  <a href="#" onclick="save()">Save</a>
+  <a href="">Refresh</a>
+{% endblock %}
 
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .container {
-      width: 800px;
-      margin: auto;
-      margin-top: 200px;
-      text-align: center;
-      font-family: cursive;
-      font-size: 26px;
-      padding: 15px;
-      border-radius: 5px 5px 0 0;
-      box-shadow: 0 -15px 18px 2px #ccc;
-    }
-  </style>
-</head>
-
-<body>
-<div class="container">
+{% block phrase %}
   {% for phrase in phrases %}
     {{ phrase.text }}
   {% endfor %}
-</div>
-</body>
-</html>
+{% endblock %}
+
+{% block script %}
+  <script>
+    function post(path, params, method) {
+      method = method || "post";
+
+      var form = document.createElement("form");
+      form.setAttribute("method", method);
+      form.setAttribute("action", path);
+
+      for (var key in params) {
+        if (params.hasOwnProperty(key)) {
+          var hiddenField = document.createElement("input");
+          hiddenField.setAttribute("type", "hidden");
+          hiddenField.setAttribute("name", key);
+          hiddenField.setAttribute("value", params[key]);
+
+          form.appendChild(hiddenField);
+        }
+      }
+
+      document.body.appendChild(form);
+      form.submit();
+    }
+
+    function save() {
+      var text = document.getElementById('text').innerText;
+      post('{% url 'saves:save_create' %}', {text: text, csrfmiddlewaretoken: '{{csrf_token }}'});
+    }
+  </script>
+{% endblock %}

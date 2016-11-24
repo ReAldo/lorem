@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block buttons %}
+  <a href="{% url 'generator:generate' %}">Generate another</a>
+{% endblock %}
+
+{% block left %}
+  <span>{{ site }}{% url 'saves:save_detail' save.pk %}</span>
+{% endblock %}
+
+{% block phrase %}
+  {{ save.text }}
+{% endblock %}
