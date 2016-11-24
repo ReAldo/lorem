@@ -25,7 +25,10 @@ SECRET_KEY = '9rqh9eng%_kfxww)cf7v_75s3b%6&7jr5p0*dzvpj1c6%^^7$&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'lorem.mokadevel.xyz',
+]
 
 
 # Application definition
