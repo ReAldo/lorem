@@ -19,3 +19,7 @@ class RandomLorem(views.APIView):
 class PhraseList(generics.ListAPIView):
     serializer_class = PhraseSerializer
     queryset = Phrase.objects.all()
+
+
+class PhraseCreate(generics.CreateAPIView):
+    serializer_class = PhraseSerializer
